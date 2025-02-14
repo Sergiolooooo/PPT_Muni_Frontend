@@ -147,7 +147,7 @@ const listComercios = async () => {
                 <td>${comercio.longitud}</td>
                 <td>${comercio.telefono}</td>
                 <td>${comercio.video_youtube}</td>
-                <td>${comercio.id_categoria}</td>
+                 <td>${comercio.categoria}</td>
                 <td>
                     <button class="btn btn-sm btn-primary btn-edit" data-id="${comercio.id_comercio}">
                         <i class="fa-solid fa-pencil"></i>
