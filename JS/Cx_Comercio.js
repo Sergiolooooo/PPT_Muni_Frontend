@@ -51,30 +51,47 @@ document.addEventListener("click", async (event) => {
     }
 });
 
-
-// Cargar datos en el modal de edición
+// Cargar datos desde el modal de edicion
 const loadComercioData = async (comercioId) => {
     try {
         console.log("Ejecutando loadComercioData con ID:", comercioId);
+
+        // Obtener los datos del comercio
         const response = await fetch(`http://localhost:3000/api/comercios/${comercioId}`);
         const result = await response.json();
-
-        console.log("Respuesta del backend:", result);
         if (!result.success || !result.data || result.data.length === 0) throw new Error("No se encontraron datos para este comercio.");
-
+        
         const comercio = result.data[0];
 
-        // Asignar valores al formulario de manera explícita
+        // Abre Obtener las categorías disponibles
+        const catResponse = await fetch("http://localhost:3000/api/categoriaComercio/");
+        const catResult = await catResponse.json();
+        if (!catResult.success) throw new Error("Error obteniendo categorías");
+
+        const categoriaSelect = document.getElementById("editCategoria");
+        categoriaSelect.innerHTML = ""; // Limpiar opciones previas
+
+        catResult.data.forEach(categoria => {
+            let option = document.createElement("option");
+            option.value = categoria.id_categoria;
+            option.textContent = categoria.nombre_categoria;
+            if (categoria.id_categoria === comercio.id_categoria) {
+                option.selected = true; // Seleccionar la categoría actual del comercio
+            }
+            categoriaSelect.appendChild(option);
+        });// Cierra Obtener las categorías disponibles
+
+
+        // Asignar valores al formulario
         document.getElementById("editId").value = comercio.id_comercio;
         document.getElementById("editNombre").value = comercio.nombre_comercio;
         document.getElementById("editDescripcion").value = comercio.descripcion_comercio;
         document.getElementById("editLatitud").value = comercio.latitud;
         document.getElementById("editLongitud").value = comercio.longitud;
         document.getElementById("editTelefono").value = comercio.telefono;
-        document.getElementById("editVideo").value = comercio.video_youtube || ''; // Aseguramos que si no tiene video, no se quede vacío
-        document.getElementById("editCategoria").value = comercio.id_categoria;
+        document.getElementById("editVideo").value = comercio.video_youtube || '';
 
-        // Mostrar el modal para editar 
+        // Mostrar el modal de edición
         new bootstrap.Modal(document.getElementById("Comercio_edit")).show();
 
     } catch (error) {
@@ -82,19 +99,21 @@ const loadComercioData = async (comercioId) => {
     }
 };
 
+
+
 // Manejar la edición (submit del formulario)
 document.getElementById("comercio_frm").addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const comercioActualizado = {
-        id_comercio: document.getElementById("editId").value,
-        nombre_comercio: document.getElementById("editNombre").value,
-        descripcion_comercio: document.getElementById("editDescripcion").value,
-        latitud: document.getElementById("editLatitud").value,
-        longitud: document.getElementById("editLongitud").value,
-        telefono: document.getElementById("editTelefono").value,
-        video_youtube: document.getElementById("editVideo").value,
-        id_categoria: document.getElementById("editCategoria").value
+        id_comercio: parseInt(document.getElementById("editId").value, 10),
+        nombre_comercio: document.getElementById("editNombre").value.trim(),
+        descripcion_comercio: document.getElementById("editDescripcion").value.trim(),
+        latitud: document.getElementById("editLatitud").value.trim(),
+        longitud: document.getElementById("editLongitud").value.trim(),
+        telefono: document.getElementById("editTelefono").value.trim(),
+        video_youtube: document.getElementById("editVideo").value.trim(),
+        id_categoria: parseInt(document.getElementById("editCategoria").value, 10)
     };
 
     try {
@@ -103,16 +122,22 @@ document.getElementById("comercio_frm").addEventListener("submit", async (event)
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(comercioActualizado)
         });
-
         if (!response.ok) throw new Error("Error actualizando comercio");
 
         alert("Comercio actualizado con éxito!");
-        document.querySelector("#Comercio_edit .btn-close").click();
+
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById("Comercio_edit"));
+        modal.hide();
+
+        // Recargar la tabla
         initDataTable();
     } catch (error) {
         console.error("Error actualizando comercio:", error);
     }
 });
+
+
 
 
 // Confirmar y eliminar comercio
@@ -180,7 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
             longitud: document.getElementById("addLongitud").value.trim(),
             telefono: document.getElementById("addTelefono").value.trim(),
             video_youtube: document.getElementById("addVideo").value.trim(),
-            id_categoria: parseInt(document.getElementById("addCategoria").value) || 0  // Convierte a número entero
+            id_categoria: parseInt(document.getElementById("addCategoria").value, 10) // Convertir a entero
+
         };
 
         try {
