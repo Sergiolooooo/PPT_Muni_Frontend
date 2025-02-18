@@ -1,5 +1,5 @@
 // Agregar la clase "hovered" al elemento seleccionado en la navegación
-let list = document.querySelectorAll(".navigationn li");
+let list = document.querySelectorAll(".navigation li");
 
 function activeLink() {
   list.forEach((item) => {
@@ -11,9 +11,9 @@ function activeLink() {
 list.forEach((item) => item.addEventListener("mouseover", activeLink));
 
 // Menu toggle
-let activarmenu = document.querySelector(".activarmenu"); // Asegúrate de que el botón de menú tenga la clase "toggle"
-let navigationn = document.querySelector(".navigationn");
-let mainn = document.querySelector(".mainn");
+let activarmenu = document.querySelector(".toggle"); // Asegúrate de que el botón de menú tenga la clase "toggle"
+let navigationn = document.querySelector(".navigation");
+let mainn = document.querySelector(".main");
 
 activarmenu.onclick = function () {
   navigationn.classList.toggle("active");

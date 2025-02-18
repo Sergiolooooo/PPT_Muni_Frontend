@@ -5,14 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="css/CategoriaComercio.css">
     <title>Dashboard</title>
 </head>
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
+    <div class="contenedor">
+        <div class="navigationn">
             <ul>
                 <li>
 
@@ -21,11 +32,11 @@
                             <img src="img/tenori_icon.png" alt="Perfil">
                         </span>
                     </a>
-                  
+
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="index.html">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -43,11 +54,11 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="CategoriaComercio.html">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Usuarios</span>
+                        <span class="title">Categorias de Comercios</span>
                     </a>
                 </li>
 
@@ -90,9 +101,9 @@
         </div>
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
+        <div class="mainn">
             <div class="topbar">
-                <div class="toggle">
+                <div class="activarmenu">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
@@ -113,40 +124,14 @@
 
                                 <div class="Columna1">
                                     <div class="input-box">
-                                        <input type="text" class="form-control" id="addNombre"  placeholder="Nombre del Comercio" required>
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-                                    <div class="input-box">
-                                        <input type="text" class="form-control" id="addDescripcion" placeholder="Descripción del Comercio" required>
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-                                    <div class="input-box">
-                                        <input type="text" lass="form-control" id="addLatitud" placeholder="Latitud" required>
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-                                    <div class="input-box">
-                                        <input type="text" class="form-control" id="addLongitud" placeholder="Longitud" required>
+                                        <input type="text" class="form-control" id="addCategoria"
+                                            placeholder="Nombre de la Categoria Comercio" required>
                                         <i class='bx bxs-user'></i>
                                     </div>
                                 </div>
 
                                 <div class="Columna1">
-                                    <div class="input-box">
-                                        <input type="number" class="form-control" id="addTelefono" placeholder="Teléfono" required min="0">
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-                                    <div class="input-box">
-                                        <input type="text" class="form-control" id="addVideo" placeholder="Video de YouTube" required>
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-                                    <div class="input-box">
-                                        <select class="form-control" id="addCategoria" required>
-                                            <option value="" disabled selected>Selecciona una categoría</option>
-                                        </select>
-                                        <i class='bx bxs-user'></i>
-                                    </div>
-
-                                    <button type="submit" class="btn">Guardar</button>
+                                    <button type="submit" class="btn" id="btn">Guardar</button>
                                 </div>
 
                             </div>
@@ -156,17 +141,59 @@
 
             </div>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                
+            <!-- ================ TABLE ================= -->
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <!-- // id de la tabla para JS-->
+                        <table id="datatable_users" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="centered">#</th>
+                                    <th class="centered">Nombre Comercio</th>
+                                    <th class="centered">Opciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody_users"> </tbody>
+                        </table>
+                    </div>
+
+                </div>
             </div>
+
+             <!-- Modal de Edición cambiar-->
+             <div class="modal fade" id="Categoria_edit" tabindex="-1" aria-labelledby="editModalLabel"
+             aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="editModalLabel">Editar Categoría Comercio</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+
+                         <!-- ID del formulario para la funcion de editar-->
+                         <form id="categoria_frm">
+                             <input type="hidden" id="editId">
+
+                             <div class="mb-3">
+                                 <label for="editCategoria" class="form-label">Nombre Categoría</label>
+                                 <input type="text" class="form-control" id="editCategoria" required>
+                             </div>
+
+                             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
         </div>
     </div>
 
 
     <script src="index.js"></script>
-
-
+    <script src="JS/tablacategoriacomercios.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
