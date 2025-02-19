@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoriaSelect = document.getElementById("addCategoria");
 
     // Llamar a la API para obtener las categorías
-    fetch("http://localhost:3000/api/categoriaComercio/")
+    fetch("http://localhost:3000/api/categoriascomercios/")
         .then(response => response.json())
         .then(data => {
             if (data.success) {

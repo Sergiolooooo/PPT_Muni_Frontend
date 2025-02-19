@@ -159,10 +159,12 @@
                                         <i class='bx bxs-user'></i>
                                     </div>
                                     <div class="input-box">
-                                        <input type="number" class="form-control" id="addCategoria"
-                                            placeholder="Id Categoria" required>
+                                        <select class="form-control" id="addCategoria" required>
+                                            <option value="" disabled selected>Selecciona una categoría</option>
+                                        </select>
                                         <i class='bx bxs-user'></i>
                                     </div>
+
                                     <button type="submit" class="btn">Guardar</button>
                                 </div>
 
@@ -248,8 +250,9 @@
 
                                 <div class="mb-3">
                                     <label for="editCategoria" class="form-label">Categoría</label>
-                                    <input type="text" class="form-control" id="editCategoria" required>
+                                    <select class="form-control" id="editCategoria" required></select>
                                 </div>
+
 
                                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                             </form>
@@ -257,11 +260,16 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+
+            </div>
         </div>
     </div>
 
 
-    <script src="index.js"></script>
+    <script src="index2.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!--Bootstrap-->
@@ -275,6 +283,7 @@
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"></script>
     <!--Custom JS-->
     <script src="JS/Cx_Comercio.js"></script>
+    <script src="JS/Op_Categoria.js"></script>
 </body>
 
 </html>
