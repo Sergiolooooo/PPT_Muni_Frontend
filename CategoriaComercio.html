@@ -162,32 +162,31 @@
                 </div>
             </div>
 
-             <!-- Modal de Edición cambiar-->
-             <div class="modal fade" id="Categoria_edit" tabindex="-1" aria-labelledby="editModalLabel"
-             aria-hidden="true">
-             <div class="modal-dialog">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title" id="editModalLabel">Editar Categoría Comercio</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
+            <!-- Modal de Edición cambiar-->
+            <div class="modal fade" id="Categoria_edit" tabindex="-1" aria-labelledby="editModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Editar Categoría</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="categoria_frm">
+                                <input type="hidden" id="editId">
+                                <div class="mb-3">
+                                    <label for="editCategoria" class="form-label">Nombre de la Categoría</label>
+                                    <input type="text" class="form-control" id="editCategoria" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                         <!-- ID del formulario para la funcion de editar-->
-                         <form id="categoria_frm">
-                             <input type="hidden" id="editId">
 
-                             <div class="mb-3">
-                                 <label for="editCategoria" class="form-label">Nombre Categoría</label>
-                                 <input type="text" class="form-control" id="editCategoria" required>
-                             </div>
-
-                             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                         </form>
-                     </div>
-                 </div>
-             </div>
-         </div>
         </div>
     </div>
 
