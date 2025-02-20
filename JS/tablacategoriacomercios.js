@@ -54,25 +54,46 @@ document.addEventListener("click", async (event) => {
 const loadCategoriaData = async (categoriaId) => {
     try {
         console.log("Ejecutando loadCategoriaData con ID:", categoriaId);
+        
         const response = await fetch(`http://localhost:3000/api/categoriascomercios/${categoriaId}`);
         const result = await response.json();
 
         console.log("Respuesta del backend:", result);
+        
         if (!result.success || !result.data || result.data.length === 0) throw new Error("No se encontraron datos para esta categoría.");
 
         const categoria = result.data[0];
 
-        // Asignar valores al formulario de manera explícita
-        document.getElementById("editId").value = categoria.id_categoria;
-        document.getElementById("editCategoria").value = categoria.nombre_categoria;
+        // Obtener los elementos del formulario
+        const editId = document.getElementById("editId");
+        const editCategoria = document.getElementById("editCategoria");
 
-        // Mostrar el modal para editar 
-        new bootstrap.Modal(document.getElementById("Categoria_edit")).show();
+        // Verificar si los elementos existen antes de asignar valores
+        if (!editId || !editCategoria) {
+            console.error("No se encontraron los elementos del formulario en el DOM.");
+            return;
+        }
+
+        // Asignar valores
+        editId.value = categoria.id_categoria;
+        editCategoria.value = categoria.nombre_categoria;
+
+        // Mostrar el modal
+        const modalElement = document.getElementById("Categoria_edit");
+        if (!modalElement) throw new Error("El modal 'Categoria_edit' no existe en el DOM.");
+
+        console.log("Abriendo el modal...");
+
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
 
     } catch (error) {
         console.error("Error al cargar datos de la categoría:", error);
     }
 };
+
+
+
 
 // Manejar la edición de categoría (submit del formulario)
 document.getElementById("categoria_frm").addEventListener("submit", async (event) => {
@@ -146,17 +167,42 @@ const listCategoriasComercios = async () => {
 
 document.getElementById("addForm").addEventListener("submit", async (event) => {
     event.preventDefault();
-    const datos = { nombre_categoria: document.getElementById("addCategoria").value.trim() };
+
+    const inputCategoria = document.getElementById("addCategoria");
+    const nuevaCategoria = inputCategoria.value.trim();
+
+    // 🚨 Validación: No permitir campos vacíos
+    if (!nuevaCategoria) {
+        alert("❌ El nombre de la categoría no puede estar vacío.");
+        return;
+    }
+
     try {
+        // Obtener todas las categorías existentes
+        const responseCategorias = await fetch("http://localhost:3000/api/categoriascomercios/");
+        const data = await responseCategorias.json();
+
+        // Verificar si la categoría ya existe (ignorando mayúsculas y espacios extra)
+        const categoriaExiste = data.data.some(categoria => categoria.nombre_categoria.trim().toLowerCase() === nuevaCategoria.toLowerCase());
+
+        if (categoriaExiste) {
+            alert("❌ La categoría ya existe. Intenta con otro nombre.");
+            return;
+        }
+
+        // Guardar la nueva categoría
         const response = await fetch("http://localhost:3000/api/categoriascomercios/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datos)
+            body: JSON.stringify({ nombre_categoria: nuevaCategoria })
         });
+
         const result = await response.json();
+
         if (result.success) {
             alert("✅ Categoría agregada con éxito!");
-            initDataTable();
+            inputCategoria.value = "";  // 🧹 Limpiar el campo de entrada
+            initDataTable();  // 🔄 Actualizar la tabla
         } else {
             alert("❌ " + (result.error || "Error desconocido"));
         }

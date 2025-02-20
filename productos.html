@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/productos.css">
+    <title>Productos</title>
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="contenedor">
+        <div class="navigationn">
+            <ul>
+                <li>
+
+                    <a href="index.html" class="perfil-link">
+                        <span class="icon">
+                            <img src="img/tenori_icon.png" alt="Perfil">
+                        </span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="agregarComercio.html">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">Comercio</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="CategoriaComercio.html">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Categorias Comercios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="productos.html">
+                        <span class="icon">
+                            <ion-icon name="bag-outline"></ion-icon>
+                        </span>
+                        <span class="title">Productos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="document-lock-outline"></ion-icon>
+                        </span>
+                        <span class="title">Roles</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Usuarios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="mainn">
+            <div class="topbar">
+                <div class="activarmenu">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <span class="title"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div class="wrapper">
+                        <h1>Agregar Producto</h1>
+                        <form id="addForm">
+                            <div class="wrapper">
+                                <div class="Total">
+                                    <div class="Columna">
+                                        <div class="input-box">
+                                            <input type="text" class="form-control" id="addProducto"
+                                                placeholder="Nombre del Producto" required>
+                                            <i class='bx bxs-user'></i>
+                                        </div>
+                                        <div class="input-box">
+                                            <input type="text" class="form-control" id="addDescripcion"
+                                                placeholder="Descripción del Producto" required>
+                                            <i class='bx bxs-user'></i>
+                                        </div>
+                                    </div>
+                                    <div class="Columna">
+                                        <div class="input-box">
+                                            <input type="text" class="form-control" id="addPrecio"
+                                                placeholder="Precio del Producto" required>
+                                            <i class='bx bxs-user'></i>
+                                        </div>
+                                        <div class="input-box">
+                                            <select class="form-control" id="idComercio" required>
+                                                <option value="" disabled selected>Seleccione un Comercio</option>
+                                            </select>
+                                            <i class='bx bxs-user'></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-container">
+                                    <button type="submit" class="btn" id="btn">Guardar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================ TABLE ================= -->
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <!-- // id de la tabla para JS-->
+                        <table id="datatable_users" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="centered">#</th>
+                                    <th class="centered">Nombre Producto</th>
+                                    <th class="centered">Descripción</th>
+                                    <th class="centered">Precio</th>
+                                    <th class="centered">Id Comercio</th>
+                                    <th class="centered">Opciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody_users"> </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal de Edición cambiar-->
+            <div class="modal fade" id="Producto_edit" tabindex="-1" aria-labelledby="editModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Editar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="producto_frm">
+                                <input type="hidden" id="editId">
+                                <div class="mb-3">
+                                    <label for="editProducto" class="form-label">Nombre del Producto</label>
+                                    <input type="text" class="form-control" id="editProducto" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescripcion" class="form-label">Descrpción del Producto</label>
+                                    <input type="text" class="form-control" id="editDescripcion" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editPrecio" class="form-label">Precio del Producto</label>
+                                    <input type="text" class="form-control" id="editPrecio" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editIdComercio" class="form-label">Comercion al que pertenece</label>
+                                    <input type="text" class="form-control" id="editIdComercio" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="JS/productos.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
