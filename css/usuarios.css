@@ -20,7 +20,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 200vh;
   background: var(--VERDE);
   overflow-x: hidden;
 }
@@ -30,221 +30,236 @@ body {
   width: 100%;
 }
 
-
 /* =============== navigationn ================ */
-
 .navigationn {
   position: fixed;
   width: 300px;
   height: 100%;
-  background-color:var(--white);
+  background-color: var(--white);
   border-left: 10px solid var(--white);
   transition: 0.5s;
   overflow: hidden;
-  border-top-right-radius: 30px; /* Esquina superior derecha redondeada */
-  border-bottom-right-radius: 30px; /* Esquina inferior derecha redondeada */
+  border-top-right-radius: 30px;
+  /* Esquina superior derecha redondeada */
+  border-bottom-right-radius: 30px;
+  /* Esquina inferior derecha redondeada */
 }
 
 .navigationn.active {
-width: 80px;
+  width: 80px;
 }
 
 .navigationn ul {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .navigationn ul li {
-position: relative;
-width: 100%;
-list-style: none;
-border-top-left-radius: 30px;
-border-bottom-left-radius: 30px;
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .navigationn ul li:hover,
 .navigationn ul li.hovered {
-background-color: var(--VERDE);
+  background-color: var(--VERDE);
 }
 
 .navigationn ul li:nth-child(1) {
-margin-bottom: 40px;
-pointer-events: none;
+  margin-bottom: 40px;
+  pointer-events: none;
 }
 
 .navigationn ul li a {
-position: relative;
-display: block;
-width: 100%;
-display: flex;
-text-decoration: none;
-color: var(--coloriconyletras);
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--coloriconyletras);
 }
+
 .navigationn ul li:hover a,
 .navigationn ul li.hovered a {
-color: var(--coloriconyletras);
+  color: var(--coloriconyletras);
 }
 
 .navigationn ul li a .icon {
-position: relative;
-display: block;
-min-width: 60px;
-height: 60px;
-line-height: 75px;
-text-align: center;
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
 }
 
 .navigationn ul li a .icon img {
   margin-top: 30px;
   margin-left: 20px;
-width: 100%;
-height: 50px;
-background-color: transparent;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
 }
 
 .navigationn.active .icon img {
-background-color: transparent;
+  background-color: transparent;
   display: none;
-}  
+}
 
 .navigationn ul li a .title {
-position: relative;
-display: block;
-padding: 0 10px;
-height: 60px;
-line-height: 60px;
-text-align: start;
-white-space: nowrap;
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
 }
 
 .navigationn.active .icon {
-background-color: transparent;
-transform: scale(1.4); /* Aumenta el tamaño del icono */
-margin-left: -25px; /* Desplaza el icono un poco más hacia la izquierda */
-position: relative; /* O usa absolute si es necesario */
-z-index: 9999; /* Asegura que esté por encima de otros elementos */
+  background-color: transparent;
+  transform: scale(1.4);
+  /* Aumenta el tamaño del icono */
+  margin-left: -30px;
+  /* Desplaza el icono un poco más hacia la izquierda */
+  position: relative;
+  /* O usa absolute si es necesario */
+  z-index: 9999;
+  /* Asegura que esté por encima de otros elementos */
 }
 
 .navigationn.active .title {
-display: none; /* Oculta el texto del título cuando la barra está en estado 'active' */
+  display: none;
+  /* Oculta el texto del título cuando la barra está en estado 'active' */
 }
 
 
 /* --------- curve outside ---------- */
 .navigationn ul li:hover a::before,
 .navigationn ul li.hovered a::before {
-content: "";
-position: absolute;
-right: 0;
-top: -50px;
-width: 50px;
-height: 50px;
-background-color: transparent;
-border-radius: 50%;
-box-shadow: 35px 35px 0px 10px var(--VERDE);
-pointer-events: none;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--VERDE);
+  pointer-events: none;
 }
+
 .navigationn ul li:hover a::after,
 .navigationn ul li.hovered a::after {
-content: "";
-position: absolute;
-right: 0;
-bottom: -50px;
-width: 50px;
-height: 50px;
-background-color: transparent;
-border-radius: 50%;
-box-shadow: 35px -35px 0px 10px var(--VERDE);
-pointer-events: none;
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--VERDE);
+  pointer-events: none;
+
 }
+
 
 
 /* ===================== FORM ===================== */
 .wrapper {
-    width: 700px;
-    color: black;
-    border-radius: 12px;
-    padding: 30px 40px;
+  width: 700px;
+  color: black;
+  border-radius: 12px;
+  padding: 30px 40px;
 
-  }
-  
-  /* Organizar columnas */
-  .Total {
-    display: flex;
-    gap: 5px; /* Espacio entre columnas */
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-left: -100px;
-  }
-  
-  .Columna1 {
-    flex: 1; /* Cada columna ocupa la mitad del espacio */
-    display: flex;
-    flex-direction: column;
-    margin-right: 100px;
-  }
-  
-  .wrapper h1 {
-    font-size: 24px;
-    text-align: center;
-    margin-right: -50px;
-  }
-  /* ESTILO DEL ESPACIO SELLECIONAR CATEGORIA */
-  .wrapper .input-box, #idComercio,
-  #addProducto, #addDescripcion, #addPrecio{
-    position: relative;
-    width: 50%;
-    height: 50px;
-    margin: 10px;
-  
-  }
-  
-  .input-box input, #idComercio,
-  #addProducto, #addDescripcion, #addPrecio{
-    width: 350px;
-    height: 100%;
-    background: gainsboro;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    font-size: 16px;
-    color: black;
-    padding: 10px 20px;
-    
-  }
+}
 
-  .input-box input::placeholder {
-    color: black;
-  }
-  
-  .input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-  }
-  
-  .wrapper .btn {
-    align-items: center;
-    width: 150px;
-    height: 45px;
-    background: var(--VERDE);
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-left: 210px;
-  }
-  
-  
-/* ===================== mainn2 ===================== */
+/* Organizar columnas */
+.Total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: -100px;
+}
+
+.Columna1 {
+  flex: 1;
+  /* Cada columna ocupa la mitad del espacio */
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.wrapper h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-right: -50px;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.input-box input,
+#addNombre,
+#addEmail,
+#addPassword{
+  width: 400px;
+  height: 100%;
+  background: gainsboro;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: black;
+  padding: 10px 20px;
+}
+
+#addNombre,
+#addEmail {
+  margin-left: 50px;
+}
+
+#addPassword, #btnguardar {
+  margin-left: -60px;
+}
+
+.input-box input::placeholder {
+  color: black;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.wrapper .btn {
+  align-items: center;
+  width: 50%;
+  height: 45px;
+  background: var(--blue);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* ===================== Main ===================== */
 .mainn {
   position: absolute;
   width: calc(100% - 300px);
@@ -254,6 +269,7 @@ pointer-events: none;
   transition: 0.5s;
 
 }
+
 .mainn.active {
   width: calc(100% - 80px);
   left: 80px;
@@ -283,7 +299,8 @@ pointer-events: none;
 /* ======================= Cards ====================== */
 .cardBox {
   position: relative;
-  width: 100%;
+  height: 350px;
+  width: 800px;
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -291,13 +308,12 @@ pointer-events: none;
 }
 
 .cardBox .card {
-  margin-left: 50px;
   background-color: white;
-  height: 350px;
+  height: 300px;
   position: relative;
   padding: 30px;
   border-radius: 20px;
-  width: 800px;
+  width: 900px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
@@ -310,22 +326,27 @@ pointer-events: none;
   margin-top: 5px;
 }
 
+
 /* ====================== TABLA ========================== */
 
 /* Centramos el texto y contenido dentro de las celdas */
 #datatable_users {
-  width: 800px;
-  margin-left: 60px;
+  width: 900px;
+  margin-left: 10px;
   border-collapse: collapse;
-  border-radius: 10px; /* Esquinas redondeadas en toda la tabla */
-  overflow: hidden; /* Asegura que las esquinas redondeadas se mantengan */
+  border-radius: 10px;
+  /* Esquinas redondeadas en toda la tabla */
+  overflow: hidden;
+  /* Asegura que las esquinas redondeadas se mantengan */
 }
 
 /* Estilo para las celdas */
-#datatable_users th, 
+#datatable_users th,
 #datatable_users td {
-  text-align: center;  /* Centramos el texto */
-  padding: 12px; /* Espaciado interno */
+  text-align: center;
+  /* Centramos el texto */
+  padding: 12px;
+  /* Espaciado interno */
 }
 
 /* Estilo para las cabeceras */
@@ -337,8 +358,10 @@ pointer-events: none;
 
 /* Estilo para las filas */
 #datatable_users tbody tr {
-  background-color: #ffffff; /* Fondo blanco para las filas */
-  transition: background-color 0.3s ease; /* Transición suave */
+  background-color: #ffffff;
+  /* Fondo blanco para las filas */
+  transition: background-color 0.3s ease;
+  /* Transición suave */
 }
 
 /* Cambiar el color de fondo cuando pasas el mouse sobre una fila */
@@ -347,30 +370,35 @@ pointer-events: none;
 }
 
 #datatable_users tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 10px; /* Esquina inferior izquierda */
+  border-bottom-left-radius: 10px;
+  /* Esquina inferior izquierda */
 }
 
 #datatable_users tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 10px; /* Esquina inferior derecha */
+  border-bottom-right-radius: 10px;
+  /* Esquina inferior derecha */
 }
-
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
-  .navigationnn {
+  .navigation {
     left: -300px;
   }
-  .navigationnn.active {
+
+  .navigation.active {
     width: 300px;
     left: 0;
   }
-  .mainn {
+
+  .main {
     width: 100%;
     left: 0;
   }
-  .mainn.active {
+
+  .main.active {
     left: 300px;
   }
+
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -380,9 +408,11 @@ pointer-events: none;
   .details {
     grid-template-columns: 1fr;
   }
+
   .recentOrders {
     overflow-x: auto;
   }
+
   .status.inProgress {
     white-space: nowrap;
   }
@@ -392,25 +422,31 @@ pointer-events: none;
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
+
   .cardHeader h2 {
     font-size: 20px;
   }
+
   .user {
     min-width: 40px;
   }
-  .navigationnn {
+
+  .navigation {
     width: 100%;
     left: -100%;
     z-index: 1000;
   }
-  .navigationn.active {
+
+  .navigation.active {
     width: 100%;
     left: 0;
   }
-  .activarmenu {
+
+  .toggle {
     z-index: 10001;
   }
-  .mainn.active .activarmenu {
+
+  .main.active .toggle {
     color: #fff;
     position: fixed;
     right: 0;

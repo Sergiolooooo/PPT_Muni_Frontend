@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/productos.css">
-    <title>Productos</title>
+
+    <link rel="stylesheet" href="css/rol.css">
+    <title>Rol</title>
 </head>
 
 <body>
@@ -80,7 +81,7 @@
                 </li>
 
                 <li>
-                    <a href="usuarios.html">
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -117,42 +118,24 @@
             <div class="cardBox">
                 <div class="card">
                     <div class="wrapper">
-                        <h1>Agregar Producto</h1>
+                        <h1>Agregar Categoria de Comercio</h1>
                         <form id="addForm">
-                            <div class="wrapper">
-                                <div class="Total">
-                                    <div class="Columna">
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addProducto"
-                                                placeholder="Nombre del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addDescripcion"
-                                                placeholder="Descripción del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
-                                    </div>
-                                    <div class="Columna">
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addPrecio"
-                                                placeholder="Precio del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
-                                        <div class="input-box">
-                                            <select class="form-control" id="idComercio" required>
-                                                <option value="" disabled selected>Seleccione un Comercio</option>
-                                            </select>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
+                            <div class="Total">
+
+                                <div class="Columna1">
+                                    <div class="input-box">
+                                        <input type="text" class="form-control" id="addCategoria"
+                                            placeholder="Nombre de la Categoria Comercio" required>
+                                        <i class='bx bxs-user'></i>
                                     </div>
                                 </div>
-                                <div class="btn-container">
+
+                                <div class="Columna1">
                                     <button type="submit" class="btn" id="btn">Guardar</button>
                                 </div>
+
                             </div>
                         </form>
-
                     </div>
                 </div>
 
@@ -167,10 +150,7 @@
                             <thead>
                                 <tr>
                                     <th class="centered">#</th>
-                                    <th class="centered">Nombre Producto</th>
-                                    <th class="centered">Descripción</th>
-                                    <th class="centered">Precio</th>
-                                    <th class="centered">Id Comercio</th>
+                                    <th class="centered">Nombre Comercio</th>
                                     <th class="centered">Opciones</th>
 
                                 </tr>
@@ -183,33 +163,21 @@
             </div>
 
             <!-- Modal de Edición cambiar-->
-            <div class="modal fade" id="Producto_edit" tabindex="-1" aria-labelledby="editModalLabel"
+            <div class="modal fade" id="Categoria_edit" tabindex="-1" aria-labelledby="editModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Editar Producto</h5>
+                            <h5 class="modal-title" id="editModalLabel">Editar Categoría</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="producto_frm">
+                            <form id="categoria_frm">
                                 <input type="hidden" id="editId">
                                 <div class="mb-3">
-                                    <label for="editProducto" class="form-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control" id="editProducto" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editDescripcion" class="form-label">Descrpción del Producto</label>
-                                    <input type="text" class="form-control" id="editDescripcion" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editPrecio" class="form-label">Precio del Producto</label>
-                                    <input type="text" class="form-control" id="editPrecio" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editIdComercio" class="form-label">Comercion al que pertenece</label>
-                                    <select class="form-control" id="editIdComercio" required></select>
+                                    <label for="editCategoria" class="form-label">Nombre de la Categoría</label>
+                                    <input type="text" class="form-control" id="editCategoria" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
                             </form>
@@ -223,12 +191,12 @@
     </div>
 
 
-    <script src="js/index.js"></script>
-    <script src="JS/productos.js"></script>
+    <script src="JS/index.js"></script>
+    <script src="JS/tablacategoriacomercios.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    
 </body>
 
 </html>

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -15,8 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/productos.css">
-    <title>Productos</title>
+
+    <link rel="stylesheet" href="css/usuarios.css">
+    <title>Usuarios</title>
 </head>
 
 <body>
@@ -112,66 +112,60 @@
                     </label>
                 </div>
             </div>
-
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card">
                     <div class="wrapper">
-                        <h1>Agregar Producto</h1>
+                        <h1>Agregar Usuario</h1>
                         <form id="addForm">
-                            <div class="wrapper">
-                                <div class="Total">
-                                    <div class="Columna">
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addProducto"
-                                                placeholder="Nombre del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addDescripcion"
-                                                placeholder="Descripción del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
+                            <div class="Total">
+
+                                <div class="Columna1">
+                                    <div class="input-box">
+                                        <input type="text" class="form-control" id="addNombre"
+                                            placeholder="Nombre del Usuario" required>
+                                        <i class='bx bxs-user'></i>
                                     </div>
-                                    <div class="Columna">
-                                        <div class="input-box">
-                                            <input type="text" class="form-control" id="addPrecio"
-                                                placeholder="Precio del Producto" required>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
-                                        <div class="input-box">
-                                            <select class="form-control" id="idComercio" required>
-                                                <option value="" disabled selected>Seleccione un Comercio</option>
-                                            </select>
-                                            <i class='bx bxs-user'></i>
-                                        </div>
+                                    <div class="input-box">
+                                        <input type="text" class="form-control" id="addEmail"
+                                            placeholder="Email" required>
+                                        <i class='bx bxs-user'></i>
                                     </div>
                                 </div>
-                                <div class="btn-container">
-                                    <button type="submit" class="btn" id="btn">Guardar</button>
+
+                                <div class="Columna1">
+                                    <div class="input-box">
+                                        <input type="password" class="form-control" id="addPassword" placeholder="Contraseña" required>
+                                        <i class="bx bxs-user"></i>
+                                        <i class="bx bxs-show" id="togglePassword"></i>
+                                    </div>
+
+                                    <button type="submit" class="btn" id="btnguardar">Guardar</button>
                                 </div>
+
                             </div>
                         </form>
-
                     </div>
                 </div>
 
             </div>
 
-            <!-- ================ TABLE ================= -->
+            <!-- ================ Order Details List ================= -->
             <div class="container my-4">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <!-- // id de la tabla para JS-->
                         <table id="datatable_users" class="table">
+
                             <thead>
                                 <tr>
                                     <th class="centered">#</th>
-                                    <th class="centered">Nombre Producto</th>
-                                    <th class="centered">Descripción</th>
-                                    <th class="centered">Precio</th>
-                                    <th class="centered">Id Comercio</th>
-                                    <th class="centered">Opciones</th>
+                                    <th class="centered">Nombre Completo</th>
+                                    <th class="centered">Email</th>
+                                    <th class="centered">Password</th>
+                                    <th class="centered">Rol </th>
+                                    <th class="centered">Fecha de Registro</th>
+                                    <th class="centered">Estado</th>
 
                                 </tr>
                             </thead>
@@ -183,52 +177,78 @@
             </div>
 
             <!-- Modal de Edición cambiar-->
-            <div class="modal fade" id="Producto_edit" tabindex="-1" aria-labelledby="editModalLabel"
+            <div class="modal fade" id="Comercio_edit" tabindex="-1" aria-labelledby="editModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Editar Producto</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Cerrar"></button>
+                            <h5 class="modal-title" id="editModalLabel">Editar Usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="producto_frm">
+
+                            <!-- ID del formulario para la funcion de editar-->
+                            <form id="comercio_frm">
                                 <input type="hidden" id="editId">
+
                                 <div class="mb-3">
-                                    <label for="editProducto" class="form-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control" id="editProducto" required>
+                                    <label for="editNombre" class="form-label">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="editNombre" required>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="editDescripcion" class="form-label">Descrpción del Producto</label>
-                                    <input type="text" class="form-control" id="editDescripcion" required>
+                                    <label for="editEmail" class="form-label">Email</label>
+                                    <textarea class="form-control" id="editEmail" required></textarea>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="editPrecio" class="form-label">Precio del Producto</label>
-                                    <input type="text" class="form-control" id="editPrecio" required>
+                                    <label for="editPassword" class="form-label">Contraseña Anter</label>
+                                    <input type="text" class="form-control" id="editPassword" required>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="editIdComercio" class="form-label">Comercion al que pertenece</label>
-                                    <select class="form-control" id="editIdComercio" required></select>
+                                    <label for="editLongitud" class="form-label">Longitud</label>
+                                    <input type="text" class="form-control" id="editLongitud" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+                                <div class="mb-3">
+                                    <label for="editTelefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="editTelefono" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editVideo" class="form-label">Video YouTube</label>
+                                    <input type="text" class="form-control" id="editVideo">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editCategoria" class="form-label">Categoría</label>
+                                    <select class="form-control" id="editCategoria" required></select>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
 
+            </div>
         </div>
     </div>
 
+    
+    <!--Custom JS-->
+    <script src="JS/usuarios.js"></script>
+    <script src="JS/index.js"></script>
 
-    <script src="js/index.js"></script>
-    <script src="JS/productos.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

@@ -47,6 +47,7 @@ document.addEventListener("click", async (event) => {
     }
 });
 
+
 const loadProductoData = async (productoId) => {
     try {
         console.log("Ejecutando loadProductoData con ID:", productoId);
@@ -71,11 +72,7 @@ const loadProductoData = async (productoId) => {
         const comercioSelect = document.getElementById("editIdComercio");
         comercioSelect.innerHTML = ""; // Limpiar opciones previas
 
-        // Agregar una opción por defecto
-        let defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.textContent = "Seleccione un comercio";
-        comercioSelect.appendChild(defaultOption);
+
 
         // Agregar opciones con los comercios existentes
         catResult.data.forEach(comercio => {
