@@ -279,10 +279,22 @@ body {
 
 }
 
+
+
 .mainn.active {
-  width: calc(100% - 80px);
-  left: 80px;
+  width: calc(100% - 8%);
+  left: 8%;
 }
+.mainn.active .cardBox{
+  width: calc(100% - 6%);
+  left: 6%;
+}
+.mainn.active #datatable_users{
+  width: calc(100% - 6%);
+  left: 6%;
+}
+
+
 
 .topbar {
   width: 100%;
@@ -304,6 +316,10 @@ body {
   cursor: pointer;
 }
 
+.mainn .card{
+ justify-content: center;
+ justify-items: center;
+}
 
 /* ======================= Cards ====================== */
 .cardBox {
@@ -317,7 +333,7 @@ body {
 }
 
 .cardBox .card {
-  height: 800px;
+  height: 530px;
   background-color: white;
   height: 500px;
   position: relative;
