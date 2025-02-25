@@ -237,7 +237,8 @@ body {
 
 #addTelefono,
 #addVideo,
-#addCategoria {
+#addCategoria,
+#imagenInput {
   margin-left: -60px;
 }
 
@@ -407,21 +408,21 @@ body {
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
-  .navigation {
+  .navigationn {
     left: -300px;
   }
 
-  .navigation.active {
+  .navigationn.active {
     width: 300px;
     left: 0;
   }
 
-  .main {
+  .mainn {
     width: 100%;
     left: 0;
   }
 
-  .main.active {
+  .mainn.active {
     left: 300px;
   }
 
@@ -457,13 +458,13 @@ body {
     min-width: 40px;
   }
 
-  .navigation {
+  .navigationn {
     width: 100%;
     left: -100%;
     z-index: 1000;
   }
 
-  .navigation.active {
+  .navigationn.active {
     width: 100%;
     left: 0;
   }
@@ -472,7 +473,7 @@ body {
     z-index: 10001;
   }
 
-  .main.active .toggle {
+  .mainn.active .toggle {
     color: #fff;
     position: fixed;
     right: 0;

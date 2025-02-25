@@ -163,6 +163,25 @@
                                         </select>
                                         <i class='bx bxs-user'></i>
                                     </div>
+                                    <div class="input-box">
+                                        <input type="file" id="imagenInput" accept="image/*">
+                                        <img id="imagenPrevia" width="200">
+
+                                        <script>
+                                            document.getElementById("imagenInput").addEventListener("change", function (event) {
+                                                const archivo = event.target.files[0]; // Obtiene el archivo seleccionado
+
+                                                if (archivo) {
+                                                    const lector = new FileReader();
+                                                    lector.readAsDataURL(archivo); // Convierte la imagen a Base64
+                                                    lector.onload = function (e) {
+                                                        document.getElementById("imagenPrevia").src = e.target.result; // Muestra la imagen
+                                                    };
+                                                }
+                                            });
+                                        </script>
+                                        <i class='bx bxs-user'></i>
+                                    </div>
 
                                     <button type="submit" class="btn">Guardar</button>
                                 </div>
@@ -252,7 +271,6 @@
                                     <select class="form-control" id="editCategoria" required></select>
                                 </div>
 
-
                                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                             </form>
                         </div>
@@ -267,7 +285,7 @@
         </div>
     </div>
 
-    
+
     <!--Custom JS-->
     <script src="JS/Cx_Comercio.js"></script>
     <script src="JS/Op_Categoria.js"></script>
